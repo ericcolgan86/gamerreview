@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import session from './sessionCache';
+import session from '../sessionCache';
 
     class StubUserAPI {
 

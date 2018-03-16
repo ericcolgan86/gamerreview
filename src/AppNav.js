@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {  NavLink  } from 'react-router-dom';
@@ -31,4 +32,4 @@ class AppNav extends React.Component {
 
 
 
-export default AppNav;
+export default withRouter(AppNav);

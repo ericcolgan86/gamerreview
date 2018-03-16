@@ -3,7 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css";
-import usersAPI from  './stubUserAPI';
+import usersAPI from  './stubAPI/stubUserAPI';
 import {Route} from 'react-router-dom';
 import GamesMain from './GamesMain';
 
@@ -25,6 +25,7 @@ class Login extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     let result = usersAPI.login(this.state.username, this.state.password);
+    <Route path='/games' component={ GamesMain } />;
   }
 
 
