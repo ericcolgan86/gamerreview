@@ -9,7 +9,7 @@ class AppNav extends Component {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#home">React-Bootstrap</a>
+            <a href="#home">Gamer-Review</a>
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
