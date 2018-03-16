@@ -4,13 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css";
 import usersAPI from  './stubAPI/stubUserAPI';
-import {Route} from 'react-router-dom';
+import {Router, withRouter} from 'react-router-dom';
 import GamesMain from './GamesMain';
 
 class Login extends React.Component {
+
   constructor(props) {
     super(props);
-
     this.state = {
       username: "",
       password: "",
@@ -26,7 +26,14 @@ class Login extends React.Component {
     event.preventDefault();
     let result = usersAPI.login(this.state.username, this.state.password);
     if(result){
-      <Route path='/games' component={ GamesMain } />;
+      // <Route path='/games' component={ GamesMain } />;
+    }
+  }
+
+  handleLogin(event){
+    let result = usersAPI.login(this.state.username, this.state.password);
+    if(result){
+      this.props.history.push('/games');
     }
   }
 
@@ -63,7 +70,7 @@ class Login extends React.Component {
             block
             bsSize="large"
             disabled={!this.validateForm()}
-            type="submit"
+            onClick={this.handleLogin.bind(this)}
           >
             Login
           </Button>
@@ -74,4 +81,4 @@ class Login extends React.Component {
 }
 
   
-export default Login;
+export default withRouter(Login);

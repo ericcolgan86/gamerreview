@@ -4,7 +4,21 @@ import { withRouter } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {  NavLink  } from 'react-router-dom';
+import session from './sessionCache';
+
 class AppNav extends React.Component {
+
+  displayUserInfo(){
+    let info
+    if(session.getSession()){
+      info = (
+        <div>
+          {session.getUser()}
+        </div>
+      )
+    }
+    return info
+  }
 
   render() {
     return (
@@ -26,6 +40,7 @@ class AppNav extends React.Component {
             </ul>
           </div>
           </div>
+          {this.displayUserInfo()}
       </Navbar>
     );
   }
