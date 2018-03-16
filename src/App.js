@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AppNav from './AppNav';
 
-class App extends Component {
-  render() {
+const App = () => {
     return (
         <AppNav />
     );
-  }
-}
+};
+
 
 export default App;
