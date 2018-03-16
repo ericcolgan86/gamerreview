@@ -25,7 +25,9 @@ class Login extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     let result = usersAPI.login(this.state.username, this.state.password);
-    <Route path='/games' component={ GamesMain } />;
+    if(result){
+      <Route path='/games' component={ GamesMain } />;
+    }
   }
 
 

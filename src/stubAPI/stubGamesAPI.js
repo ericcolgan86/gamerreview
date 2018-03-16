@@ -1,40 +1,44 @@
 import _ from 'lodash';
-import session from './sessionCache';
-import session from '../sessionCache';
 
     class StubGamesAPI {
 
         constructor() {
-            this.users = [
+            this.games = [
                 {
-                    'username': 'Eric86',
-                    'password': 'Eric86'
+                    'id': 'MHW',
+                    'name': 'Monster Hunter World',
+                    'description': 'Eric86',
+                    'image-url-small':'../../public/Images/MHS-SMALL.jpg',
+                    'image-url-big':'../../public/Images/MHS-BIG.jpg',
+                    'rating':'5'
                 },
-
                 {
-                    'username': 'Mick87',
-                    'password': 'Mick87'
+                    'id': 'DS',
+                    'name': 'Dark Souls',
+                    'description': 'Eric86',
+                    'image-url-small':'../../public/Images/DS-SMALL.jpg',
+                    'image-url-big':'../../public/Images/DS-BIG.jpg',
+                    'rating':'4'
+                },
+                {
+                    'id': 'MGS',
+                    'name': 'Metal Gear Solid',
+                    'description': 'Metal Gear is a series of action-adventure stealth video games, created by Hideo Kojima and developed and published by Konami.The first game, Metal Gear,was released in 1987 for the MSX home computer architecture.',
+                    'image-url-small':'../../public/Images/MGS-SMALL.jpg',
+                    'image-url-big':'../../public/Images/MGS-BIG.jpg',
+                    'rating':'3'
                 }
             ] ; 
         }
 
-        login(u,p) {
-             let user = _.find(this.users, function(user) { return user.username === u && user.password === p; })
-             if (user !== undefined)
-             {
-                session.setSession(true);
-                session.setUser(user.username);
-                return true;
-             }
-             return false;
+        getAll() {
+             return this.games;
         }
 
-        add(u,p) {
-            let len = this.users.length;
-            let newLen = this.users.push({
-                username: u, password: p });
-            return newLen > len ;
-        }
+        getByID(id) {
+            let game = _.find(this.games, function(g) { return g.id === id});
+            return game;
+       }
     }
 
     export default (new StubGamesAPI() );

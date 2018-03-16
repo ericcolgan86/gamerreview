@@ -9,7 +9,7 @@ class GamesDetail extends React.Component {
     return (
       <div>
         <AppNav />   
-        <div align="center">  Games Detail</div>  
+          <div align="center"> Games Detail</div>  
       </div>
     );
   }
