@@ -1,8 +1,8 @@
 import React from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link, NavLink  } from 'react-router-dom';
+import {  NavLink  } from 'react-router-dom';
 class AppNav extends React.Component {
   render() {
     return (

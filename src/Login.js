@@ -3,20 +3,30 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css";
+import usersAPI from  './stubUserAPI';
+import {Route} from 'react-router-dom';
+import GamesMain from './GamesMain';
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: "",
-      password: ""
+      username: "",
+      password: "",
+      error:""
     };
   }
 
   validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
+    return this.state.username.length > 0 && this.state.password.length > 0;
   }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    let result = usersAPI.login(this.state.username, this.state.password);
+  }
+
 
   handleChange = event => {
     this.setState({
@@ -24,20 +34,17 @@ class Login extends React.Component {
     });
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
-  }
+
 
   render() {
     return (
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="email" bsSize="large">
-            <ControlLabel>Email</ControlLabel>
+          <FormGroup controlId="username" bsSize="large">
+            <ControlLabel>UserName</ControlLabel>
             <FormControl
               autoFocus
-              type="email"
-              value={this.state.email}
+              value={this.state.username}
               onChange={this.handleChange}
             />
           </FormGroup>
