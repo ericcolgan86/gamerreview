@@ -2,8 +2,8 @@ import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-const AppNav = () => {
+class AppNav extends React.Component {
+  render(){
     return (
       <Navbar>
         <Navbar.Header>
@@ -21,7 +21,9 @@ const AppNav = () => {
         </Nav>
       </Navbar>
     );
-  };
+  }
+}
+    
 
 
 export default AppNav;
