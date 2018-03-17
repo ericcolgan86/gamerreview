@@ -6,6 +6,8 @@ import "./Login.css";
 import usersAPI from  './stubAPI/stubUserAPI';
 import {Router, withRouter} from 'react-router-dom';
 import GamesMain from './GamesMain';
+import session from './sessionCache';
+import Recaptcha from 'react-recaptcha'
 
 class Login extends React.Component {
 
@@ -14,20 +16,20 @@ class Login extends React.Component {
     this.state = {
       username: "",
       password: "",
+      captcha: false,
       error:""
     };
   }
 
-  validateForm() {
-    return this.state.username.length > 0 && this.state.password.length > 0;
+  componentWillMount() {
+    console.log(">> componentDidMount Login.js");
+    session.resetSession();
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
-    let result = usersAPI.login(this.state.username, this.state.password);
-    if(result){
-      // <Route path='/games' component={ GamesMain } />;
-    }
+
+  validateForm() {
+    return this.state.username.length > 0 && this.state.password.length > 0;
+    //return this.state.username.length > 0 && this.state.password.length > 0 && this.state.captcha;
   }
 
   handleLogin(event){
@@ -43,7 +45,11 @@ class Login extends React.Component {
       [event.target.id]: event.target.value
     });
   }
-
+ 
+  verifyCallback(value) {
+    console.log("verify:", value);
+      this.setState({captcha: true});
+  }
 
 
   render() {
@@ -65,7 +71,15 @@ class Login extends React.Component {
               onChange={this.handleChange}
               type="password"
             />
+            {/* <Recaptcha
+              sitekey="6LeGP00UAAAAAHhY-prpaSVOMYEoOWExqYIF6eXs"
+              render="explicit"
+              verifyCallback={this.verifyCallback.bind(this)}
+            />         */}
+          {/* <div className="g-recaptcha" data-sitekey="6LeGP00UAAAAAHhY-prpaSVOMYEoOWExqYIF6eXs"></div> */}
+            
           </FormGroup>
+
           <Button
             block
             bsSize="large"
@@ -75,6 +89,7 @@ class Login extends React.Component {
             Login
           </Button>
         </form>
+        
       </div>
     );
   }

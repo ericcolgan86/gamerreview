@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 export default class GameItem extends React.Component {
   render() {
     let g = this.props.game;
+    console.log(g.imageurlsmall);
     return (
       <li>
         <Link to={'/games/' + g.id}>

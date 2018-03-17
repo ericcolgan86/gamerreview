@@ -8,24 +8,24 @@ import _ from 'lodash';
                     'id': 'MHW',
                     'name': 'Monster Hunter World',
                     'description': 'Eric86',
-                    'image-url-small':'../../public/Images/MHS-SMALL.jpg',
-                    'image-url-big':'../../public/Images/MHS-BIG.jpg',
+                    'imageurlsmall':'/Images/MHW-SMALL.jpg',
+                    'imageurlbig':'/Images/MHW-BIG.jpg',
                     'rating':'5'
                 },
                 {
                     'id': 'DS',
                     'name': 'Dark Souls',
                     'description': 'Eric86',
-                    'image-url-small':'../../public/Images/DS-SMALL.jpg',
-                    'image-url-big':'../../public/Images/DS-BIG.jpg',
+                    'imageurlsmall':'/Images/DS-SMALL.jpg',
+                    'imageurlbig':'/Images/DS-BIG.jpg',
                     'rating':'4'
                 },
                 {
                     'id': 'MGS',
                     'name': 'Metal Gear Solid',
                     'description': 'Metal Gear is a series of action-adventure stealth video games, created by Hideo Kojima and developed and published by Konami.The first game, Metal Gear,was released in 1987 for the MSX home computer architecture.',
-                    'image-url-small':'../../public/Images/MGS-SMALL.jpg',
-                    'image-url-big':'../../public/Images/MGS-BIG.jpg',
+                    'imageurlsmall':'/Images/MGS-SMALL.jpg',
+                    'imageurlbig':'/Images/MGS-BIG.jpg',
                     'rating':'3'
                 }
             ] ; 

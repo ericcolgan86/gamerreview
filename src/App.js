@@ -4,8 +4,14 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AppNav from './AppNav';
 import Login from './Login';
+import session from './sessionCache';
 
 class App extends React.Component {
+
+  componentWillMount() {
+    console.log(">> componentWillMount App.js");
+    session.resetSession();
+  }
   render() {
     return (
       <div>

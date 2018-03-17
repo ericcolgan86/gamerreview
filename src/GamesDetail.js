@@ -3,10 +3,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { withRouter } from 'react-router-dom';
 import AppNav from './AppNav';
-// import mockJSON
+import StubGamesApi from './stubAPI/stubGamesAPI';
 
 class GamesDetail extends React.Component {
-
   constructor(props){
     super(props)
     let params = props.match.params
@@ -14,33 +13,44 @@ class GamesDetail extends React.Component {
       id: params.id,
       gameName: null,
       gameDescription: null,
+      gameImage: null,
       loading: true
     }
   }
 
   componentDidMount(){
-    console.log('>> component just mounted');
-    // go get the data from the id:
-
-    // let data = stubApi.getData(this.state.id)
-    // this.setState({gameName: data.name, gameDescription: data.description, loading : false})
-    // can put setTimeout on this to make it look fancy
-
-    // just have setTimeout here to simulate loading time
-    setTimeout(() => this.setState({loading: false}), 3000);
-
+    console.log('>> component just mounted GAMES DETAIL');
+    let data = StubGamesApi.getByID(this.state.id);
+    console.log('>> gamename' + data.name);
+    console.log('>> Image' + data.imageurlbig);
     
+    // just have setTimeout here to simulate loading time
+    setTimeout(() => this.setState({
+      gameName: data.name, 
+      gameDescription: data.description,
+      gameImage: data.imageurlbig,
+      loading : false
+    }), 3000);
   }
 
   buildSpinner(){
     return(
-      <div>IM LOADING</div>
+      <div className="container-fluid">IM LOADING</div>
     )
   }
 
   buildContent(){
+    console.log('>> gamename' + this.state);
+    let image = (
+      <div>
+        {this.state.gameName}
+        </div>
+      // <div className="container-fluid">
+      //   <img src={this.state.gameImage}/>
+      // </div>
+      ) ;
    return( 
-    <div align="center"> Games Detail</div>  
+    <div className="container-fluid" align="center"> {image}</div>  
    )
   }
 
@@ -55,7 +65,7 @@ class GamesDetail extends React.Component {
     }
 
     return (   
-      <div>
+      <div className="container-fluid">
         <AppNav />   
         {content}
       </div>

@@ -20,5 +20,10 @@ class SessionCache {
         return this.user;
      }
 
+     resetSession() {
+        this.session = false ;
+        this.user = null ;
+     }
+
 }
 export default (new SessionCache() );
