@@ -4,11 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css";
 import usersAPI from  './stubAPI/stubUserAPI';
-import {Router, withRouter} from 'react-router-dom';
-import GamesMain from './GamesMain';
-import session from './sessionCache';
+import { withRouter} from 'react-router-dom';
 import Recaptcha from 'react-recaptcha';
-let recaptchaInstance;
+
 
 class Login extends React.Component {
 

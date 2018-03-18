@@ -53,7 +53,7 @@ class GamesDetail extends React.Component {
             <p className="card-text">{this.state.gameDescription}</p>
             <p className="card-text"><small className="text-muted">Rating:{this.state.gameRating}</small></p>
           </div>
-          <iframe allign="center" width="854" height="480" src={this.state.gameReview} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <iframe title={this.state.gameName} align="center" width="854" height="480" src={this.state.gameReview} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
       ) ;
    return( 
