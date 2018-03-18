@@ -7,9 +7,12 @@ import usersAPI from  './stubAPI/stubUserAPI';
 import {Router, withRouter} from 'react-router-dom';
 import GamesMain from './GamesMain';
 import session from './sessionCache';
-import Recaptcha from 'react-recaptcha'
+import Recaptcha from 'react-recaptcha';
+let recaptchaInstance;
 
 class Login extends React.Component {
+
+
 
   constructor(props) {
     super(props);
@@ -17,25 +20,52 @@ class Login extends React.Component {
       username: "",
       password: "",
       captcha: false,
-      error:""
+      error:"",
+      success:""
     };
   }
 
-  componentWillMount() {
-    console.log(">> componentDidMount Login.js");
-    session.resetSession();
-  }
+
 
 
   validateForm() {
-    return this.state.username.length > 0 && this.state.password.length > 0;
-    //return this.state.username.length > 0 && this.state.password.length > 0 && this.state.captcha;
+    //return this.state.username.length > 0 && this.state.password.length > 0;
+    return this.state.username.length > 0 && this.state.password.length > 0 && this.state.captcha;
   }
 
   handleLogin(event){
     let result = usersAPI.login(this.state.username, this.state.password);
-    if(result){
+    if(result === true){
       this.props.history.push('/games');
+    }
+    else
+    {
+      this.recaptcha.reset();
+      this.setState({
+        username: "",
+        password: "",
+        captcha: false,
+        error:result,
+        success:""
+      })
+    }
+  }
+
+  handleSignup(event){
+    let result = usersAPI.add(this.state.username, this.state.password);
+    if(result === true){
+      this.setState({
+        success:"Sign up successful, Login"
+      })
+    }
+    else
+    {
+      this.recaptcha.reset();
+      this.setState({
+        success:"",
+        error:result,
+        captcha: false
+      })
     }
   }
 
@@ -54,7 +84,10 @@ class Login extends React.Component {
 
   render() {
     return (
+      
       <div className="Login">
+        {this.state.error}
+        {this.state.success}
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="username" bsSize="large">
             <ControlLabel>UserName</ControlLabel>
@@ -71,12 +104,12 @@ class Login extends React.Component {
               onChange={this.handleChange}
               type="password"
             />
-            {/* <Recaptcha
+            <Recaptcha
+              ref={e => this.recaptcha = e}
               sitekey="6LeGP00UAAAAAHhY-prpaSVOMYEoOWExqYIF6eXs"
               render="explicit"
               verifyCallback={this.verifyCallback.bind(this)}
-            />         */}
-          {/* <div className="g-recaptcha" data-sitekey="6LeGP00UAAAAAHhY-prpaSVOMYEoOWExqYIF6eXs"></div> */}
+            />        
             
           </FormGroup>
 
@@ -87,6 +120,14 @@ class Login extends React.Component {
             onClick={this.handleLogin.bind(this)}
           >
             Login
+          </Button>
+          <Button
+            block
+            bsSize="large"
+            disabled={!this.validateForm()}
+            onClick={this.handleSignup.bind(this)}
+          >
+            Signup
           </Button>
         </form>
         

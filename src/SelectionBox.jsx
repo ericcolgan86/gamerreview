@@ -1,11 +1,7 @@
 import React from 'react';
-import _ from 'lodash';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { withRouter, Link } from 'react-router-dom';
-import AppNav from './AppNav';
-import stubGames from './stubAPI/stubGamesAPI';
-import GamesList from './GamesList'
+
 
 export default class SelectBox extends React.Component {
   handleChange = (e, type, value) => {
@@ -23,7 +19,7 @@ export default class SelectBox extends React.Component {
 
   render() {
     return (
-      <div className="col-md-10">
+      <div className="selection-box">
         <input type="text" placeholder="Search"
           value={this.props.filterText}
           onChange={this.handleTextChange} />

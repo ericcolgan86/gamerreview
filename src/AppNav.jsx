@@ -51,6 +51,7 @@ class AppNav extends React.Component {
         <div className="links-navbar-div">
           <div className="btn-nav">
             <ul className="nav navbar-nav navbar-right">
+            {this.displayUser()}
               {this.displayLogout()}
               <li>
                 <NavLink to="/games">Games</NavLink>

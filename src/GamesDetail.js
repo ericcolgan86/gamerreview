@@ -14,6 +14,8 @@ class GamesDetail extends React.Component {
       gameName: null,
       gameDescription: null,
       gameImage: null,
+      gameRating: null,
+      gameReview: null,
       loading: true
     }
   }
@@ -29,28 +31,33 @@ class GamesDetail extends React.Component {
       gameName: data.name, 
       gameDescription: data.description,
       gameImage: data.imageurlbig,
+      gameRating: data.rating,
+      gameReview: data.reviewurl,
       loading : false
     }), 3000);
   }
 
   buildSpinner(){
     return(
-      <div className="container-fluid">IM LOADING</div>
+      <img align="center" className="card-img-top" src="/Images/loading.gif" alt="Loading"/>
     )
   }
 
   buildContent(){
     console.log('>> gamename' + this.state);
-    let image = (
-      <div>
-        {this.state.gameName}
-        </div>
-      // <div className="container-fluid">
-      //   <img src={this.state.gameImage}/>
-      // </div>
+    let item = (
+      <div className="card">
+          <img className="card-img-top" src={this.state.gameImage} alt={this.state.gameName}/>
+          <div className="card-body">
+            <h5 className="card-title">{this.state.gameName}</h5>
+            <p className="card-text">{this.state.gameDescription}</p>
+            <p className="card-text"><small className="text-muted">Rating:{this.state.gameRating}</small></p>
+          </div>
+          <iframe allign="center" width="854" height="480" src={this.state.gameReview} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
       ) ;
    return( 
-    <div className="container-fluid" align="center"> {image}</div>  
+    <div className="container-fluid" align="center"> {item}</div>  
    )
   }
 

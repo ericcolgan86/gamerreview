@@ -25,14 +25,23 @@ import session from '../sessionCache';
                 session.setUser(user.username);
                 return true;
              }
-             return false;
+             return "Login Failed";
         }
 
         add(u,p) {
-            let len = this.users.length;
+            let user = _.find(this.users, function(user) { return user.username === u})
+            if(!user)
+            {
+                let len = this.users.length;
             let newLen = this.users.push({
                 username: u, password: p });
             return newLen > len ;
+            }
+            else
+            {
+                return "Username Already exists"
+            }
+            
         }
     }
 

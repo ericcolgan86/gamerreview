@@ -8,7 +8,9 @@ class About extends React.Component {
     return (
       <div>
         <AppNav />
-        About
+        <div className="container-fluid" align="centre">
+          About
+        </div>
       </div>
     );
   }

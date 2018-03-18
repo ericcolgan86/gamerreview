@@ -47,6 +47,7 @@ class GamesMain extends React.Component {
             <SelectionBox onUserInput={this.handleChange}
               filterText={this.state.search}
               sort={this.state.sort} />
+              <br />
             <GamesList games={filteredList} />
           </div>
         </div>
